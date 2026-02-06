@@ -1,1 +1,108 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>MyNaughtyVault</title></head><body><h1>MyNaughtyVault Final Placeholder</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"> <title>Bethany • Luxury & Vault</title>
+    <style>
+        :root { --accent: #ff4444; --bg: #0a0a0a; --text: #e0e0e0; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; }
+        .dark-luxe-header { text-align: center; padding: 40px 20px; border-bottom: 1px solid #222; width: 100%; }
+        .menu-card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; margin: 20px; width: 90%; max-width: 400px; }
+        button { background: var(--accent); color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+        #admin-panel { display: none; margin-top: 20px; border-top: 1px dashed #444; padding-top: 20px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <header class="dark-luxe-header" id="site-header">
+        <h1>Bethany</h1>
+        <p>Luxury Companionship & Private Experiences</p>
+    </header>
+
+    <div class="menu-card">
+        <h3>Private Menu</h3>
+        <p>Quick Meet (30 min) — $200</p>
+        <p>Standard Date (1 hr) — $350</p>
+        <button onclick="promptVault()">Unlock Private Vault</button>
+        
+        <div id="admin-panel">
+            <h4>Bethany Admin</h4>
+            <p>Today's Stats: 0 Clicks | $0 Tips</p>
+            <button onclick="exportCRM()">Export Mini CRM (CSV)</button>
+        </div>
+    </div>
+
+    <script>
+        // High-Security SHA-256 Vault Hash
+        const VAULT_HASH = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
+
+        async function promptVault() {
+            const pass = prompt("Enter Security Key:");
+            if (!pass) return;
+            const hash = await hashInput(pass);
+            if (hash === VAULT_HASH) {
+                alert("Vault Access Granted.");
+                document.getElementById('admin-panel').style.display = 'block';
+            } else {
+                alert("Unauthorized Access Attempt.");
+            }
+        }
+
+        async function hashInput(input) {
+            const msgBuffer = new TextEncoder().encode(input);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Panic Redirect: Triple-tap the header to go to Weather.com
+        let taps = 0;
+        document.getElementById('site-header').addEventListener('click', () => {
+            taps++;
+            setTimeout(() => taps = 0, 500);
+            if (taps === 3) window.location.href = 'https://weather.com';
+        });
+
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>
+<div class="menu-card">
+    <div class="goal-label">
+        <span>Wardrobe Goal ($500)</span>
+        <span id="wardrobe-percent">65%</span>
+    </div>
+    <div class="goal-container">
+        <div id="wardrobe-fill" class="progress-fill"></div>
+    </div>
+
+    <div class="goal-label" style="margin-top: 20px;">
+        <span>Vault Unlock Progress</span>
+        <span id="vault-percent">20%</span>
+    </div>
+    <div class="goal-container">
+        <div id="vault-fill" class="progress-fill"></div>
+    </div>
+</div>
+<div id="vault-success" class="hidden">
+    <div class="success-header">
+        <span class="unlock-icon">🔓</span>
+        <h2>Access Granted</h2>
+        <p class="fade-text">Welcome to your private experience, VIP.</p>
+    </div>
+
+    <div class="content-grid">
+        <div class="content-item placeholder">
+            <div class="lock-overlay">Processing Drop...</div>
+        </div>
+        <div class="content-item placeholder">
+            <div class="lock-overlay">Processing Drop...</div>
+        </div>
+    </div>
+
+    <button class="lock-btn" onclick="lockVault()">Secure & Exit Vault</button>
+</div>
