@@ -30,6 +30,10 @@ html[data-theme="light"] {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Inter", "Segoe UI", system-ui, sans-serif;
   background: radial-gradient(circle at top, rgba(247, 141, 187, 0.2), transparent 45%),
@@ -38,10 +42,32 @@ body {
   min-height: 100vh;
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 16px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  z-index: 10;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+}
+
 .page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
 }
 
 .site-header {
@@ -127,6 +153,10 @@ body {
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primary {
@@ -144,6 +174,33 @@ body {
 .primary:hover,
 .ghost:hover {
   transform: translateY(-2px);
+}
+
+.primary:focus-visible,
+.ghost:focus-visible,
+.nav-links a:focus-visible,
+.theme-toggle:focus-visible,
+.player-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+}
+
+.muted-text {
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.6;
 }
 
 .categories {
@@ -275,6 +332,10 @@ body {
 
   .now-playing {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-header {
     align-items: flex-start;
   }
 }

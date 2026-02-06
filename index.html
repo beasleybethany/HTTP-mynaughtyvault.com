@@ -8,9 +8,10 @@
     <script defer src="js/main.js"></script>
   </head>
   <body>
+    <a class="skip-link" href="#home">Skip to content</a>
     <div class="page">
       <header class="site-header">
-        <nav class="nav">
+        <nav class="nav container">
           <div class="nav-brand">MyNaughtyVault</div>
           <div class="nav-links">
             <a href="#home">Home</a>
@@ -23,17 +24,27 @@
         </nav>
       </header>
 
-      <main id="home" class="main">
+      <main id="home" class="main container">
         <section class="hero">
           <p class="eyebrow">Welcome to MyNaughtyVault</p>
           <h1>Explore intimate experiences with confidence.</h1>
           <p class="hero-subtitle">
             Hand-crafted categories and immersive playlists accompany your journey.
           </p>
-          <button class="primary">Browse Categories</button>
+          <a class="primary" href="#categories">Browse Categories</a>
         </section>
 
-        <section class="categories" aria-label="Featured categories">
+        <section class="section-header" aria-label="Category introduction">
+          <div>
+            <p class="eyebrow">Browse</p>
+            <h2>Hand-crafted Categories</h2>
+          </div>
+          <p class="muted-text">
+            Find the vibe that matches your mood, from soft romance to bold fantasy.
+          </p>
+        </section>
+
+        <section id="categories" class="categories" aria-label="Featured categories">
           <article class="category">
             <div>
               <h2>Soft &amp; Sweet</h2>
@@ -78,6 +89,14 @@
           </article>
         </section>
 
+        <section class="section-header" aria-label="Now playing introduction">
+          <div>
+            <p class="eyebrow">Playlist</p>
+            <h2>Now Playing</h2>
+          </div>
+          <p class="muted-text">Queue up curated audio drops and story-driven moments.</p>
+        </section>
+
         <section class="now-playing" aria-label="Now playing">
           <div>
             <p class="eyebrow">Now Playing</p>
@@ -87,6 +106,16 @@
             <button type="button" class="player-btn" aria-label="Previous">◀</button>
             <button type="button" class="player-btn" aria-label="Play">▶</button>
           </div>
+        </section>
+
+        <section class="section-header" aria-label="Policy overview">
+          <div>
+            <p class="eyebrow">Policies</p>
+            <h2>Trust &amp; Transparency</h2>
+          </div>
+          <p class="muted-text">
+            Review the policies that keep the vault respectful, secure, and compliant.
+          </p>
         </section>
 
         <section class="info-grid">
@@ -122,7 +151,9 @@
       </main>
 
       <footer class="site-footer">
-        <p>&copy; 2024 MyNaughtyVault. All rights reserved.</p>
+        <div class="container">
+          <p>&copy; 2024 MyNaughtyVault. All rights reserved.</p>
+        </div>
       </footer>
     </div>
 
