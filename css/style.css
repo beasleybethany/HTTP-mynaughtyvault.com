@@ -152,6 +152,30 @@ body {
   gap: 20px;
 }
 
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.info-card {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  display: grid;
+  gap: 12px;
+}
+
+.info-card h2 {
+  font-size: 1.1rem;
+}
+
+.info-card p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .category {
   background: linear-gradient(135deg, var(--surface), var(--surface-alt));
   border-radius: 20px;
