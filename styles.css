@@ -1,1 +1,85 @@
-body { background: #000; color: #fff; }
+/* Progress Container */
+.goal-container {
+    background: #1a1a1a;
+    border-radius: 20px;
+    height: 12px;
+    width: 100%;
+    margin: 15px 0;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+/* The Animated Fill */
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff4444, #ff8888);
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+    border-radius: 20px;
+    transition: width 0.3s ease-out;
+}
+
+.goal-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/* Success State Animations */
+#vault-success {
+    animation: slideUpFade 0.8s ease-out forwards;
+    padding: 20px;
+    text-align: center;
+}
+
+@keyframes slideUpFade {
+    0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.success-header h2 {
+    color: #ff4444;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.content-item {
+    aspect-ratio: 1/1;
+    background: #151515;
+    border: 1px solid #222;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.lock-overlay {
+    font-size: 0.7rem;
+    color: #444;
+    text-transform: uppercase;
+}
+
+.lock-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 40px;
+}
+
+.lock-btn:hover {
+    border-color: #ff4444;
+    color: #fff;
+}
